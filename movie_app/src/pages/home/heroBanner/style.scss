@@ -1,0 +1,248 @@
+@import "../../../mixins.scss";
+
+:root {
+  --black: #000;
+  --black2: #000;
+  --black3: #000000;
+  --black-lighter: #000000;
+  --black-light: #000000;
+  --pink: #da2f68;
+  --orange: #f89e00;
+  --gradient: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
+  --blue: #3a8bff;
+  --green: #28c76f;
+  --gray-dark: #20232a;
+  --gray-light: #282c34;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--black);
+  color: #ffffff;
+  font-family: 'Inter', 'Avenir', 'Helvetica', 'Arial', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  color: var(--pink);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--orange);
+}
+
+button {
+  background: var(--gradient);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: var(--orange);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.heroBanner {
+  width: 100%;
+  height: 700px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #1e3c72);
+  background-size: 600% 600%;
+  animation: gradientAnimation 10s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  @include md {
+    height: 700px;
+  }
+
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .backdrop-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    overflow: hidden;
+    .lazy-load-image-background {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: brightness(0.5);
+      }
+    }
+  }
+
+  .opacity-layer {
+    width: 100%;
+    height: 700px;
+    background: linear-gradient(
+      200deg,
+      rgba(0, 0, 0, 0.2) 48%,
+      rgba(0, 0, 0, 0.6) 80%,
+      #000000 120%
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .heroBannerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+
+    .title {
+      font-size: 60px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #ff6f61;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transition: font-size 0.3s, color 0.3s;
+      &:hover {
+        color: #ff8c61;
+        text-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+      }
+      @include md {
+        margin-bottom: 20px;
+        font-size: 90px;
+      }
+    }
+
+    .subTitle {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 40px;
+      color: #ffffff;
+      transition: font-size 0.3s, color 0.3s;
+      &:hover {
+        color: #f89e00;
+      }
+      @include md {
+        font-size: 28px;
+      }
+    }
+
+    .searchInput {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+      input {
+        width: calc(100% - 140px);
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.9);
+        outline: 0;
+        border: 0;
+        border-radius: 30px 0 0 30px;
+        padding: 0 20px;
+        font-size: 16px;
+        color: var(--black);
+        transition: background-color 0.3s, color 0.3s, width 0.3s;
+        @include md {
+          width: calc(100% - 180px);
+          height: 60px;
+          font-size: 20px;
+          padding: 0 30px;
+        }
+      }
+
+      button {
+        width: 140px;
+        height: 50px;
+        background: linear-gradient(135deg, #21deff 0%, #1e3335 100%);
+        color: white;
+        outline: 0;
+        border: 0;
+        border-radius: 0 30px 30px 0;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        @include md {
+          width: 180px;
+          height: 60px;
+          font-size: 20px;
+        }
+        &:hover {
+          background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: var(--gradient);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  &:hover {
+    background: var(--orange);
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--black-lighter);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}

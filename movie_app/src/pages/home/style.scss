@@ -1,0 +1,27 @@
+.carouselSection {
+    position: relative;
+    margin-bottom: 70px;
+
+    & > .contentWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); // Gradient background
+        border-radius: 10px; // Rounded corners
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Subtle shadow
+    }
+
+    .carouselTitle {
+        font-size: 24px;
+        color: #f0f0f0; // Light grey color
+        font-weight: 300;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); // Text shadow for depth
+        transition: color 0.3s ease, transform 0.3s ease; // Smooth transition effects
+        &:hover {
+            color: #ffd700; // Gold color on hover
+            transform: scale(1.05); // Slightly enlarge on hover
+        }
+    }
+}
